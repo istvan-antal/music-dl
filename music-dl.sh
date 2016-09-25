@@ -6,7 +6,7 @@ youtube-dl -x --add-metadata --embed-thumbnail --write-info-json --write-descrip
 MP3_FILE=$(find . -iname "*.mp3" -print)
 DESCRIPTION_FILE=$(find . -iname "*.description" -print)
 JSON_FILE=$(find . -iname "*.json" -print)
-UPLOADER=$(cat "$JSON_FILE" |  python -c "import json,sys;obj=json.load(sys.stdin);print obj['uploader'];")
+UPLOADER=$(cat "$JSON_FILE" | python -c "import json,sys;obj=json.load(sys.stdin);print obj['uploader'];")
 eyeD3 --artist="$UPLOADER" --add-lyrics="$DESCRIPTION_FILE" "$MP3_FILE"
 rm "$DESCRIPTION_FILE"
 rm "$JSON_FILE"
